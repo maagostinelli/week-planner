@@ -4,7 +4,7 @@ import { useState } from 'react'
 import './style.scss'
 
 export function Calendar() {
-    const currentDate = new Date
+    let currentDate = new Date
     const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
 
     function handleRenderCalendar(date: Date = currentDate) {    
