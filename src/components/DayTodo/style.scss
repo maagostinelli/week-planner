@@ -1,0 +1,30 @@
+.day-todo {
+    width: 30rem;
+    height: 30rem;
+    background-color: var(--content-div-background);
+    border-radius: .8rem;
+    margin: .6rem;
+    padding: .5rem;
+    color: #000;
+}
+
+.todo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+        color: var(--primary-color);
+        text-transform: uppercase;
+    }
+
+    button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: .6;
+    }
+}
