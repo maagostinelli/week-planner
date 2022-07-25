@@ -1,20 +1,40 @@
 import { CaretLeft, CaretRight } from 'phosphor-react'
-import { useState } from 'react'
+import React from 'react'
+import { render } from 'react-dom'
 
 import './style.scss'
 
-export function Calendar() {
-    let currentDate = new Date
-    const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+interface IState {
+    currentDate: Date,
+    months: string[],
+    days: JSX.Element[]
+}
 
-    function handleRenderCalendar(date: Date = currentDate) {    
+interface IProps {}
+
+export default class Calendar extends React.Component<IProps, IState>{
+    constructor(props: IProps){
+        super(props)
+        this.state = {
+            currentDate: new Date(),
+            months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+            days: []
+        }
+    }
+
+    componentDidMount(): void{
+        this.setState({days: this.handleRenderCalendar()})
+    }
+
+    handleRenderCalendar(date: Date = this.state.currentDate): JSX.Element[]{
         const lastDay = new Date(date.getFullYear(), date.getMonth()+1, 0).getDate()
         const previousLastDay = new Date(date.getFullYear(), date.getMonth(), 0).getDate()
     
         date.setDate(1)
         const firstDayIndex = date.getDay()
+        const lastDayIndex = new Date(date.getFullYear(), date.getMonth()+1, 0).getDay()
         
-        let days = []
+        let days: JSX.Element[] = []
         const nextDays = 42 - (firstDayIndex + lastDay)
     
         for (let p = firstDayIndex; p >= 1; p--) {
@@ -33,16 +53,43 @@ export function Calendar() {
         for (let p = 1; p <= nextDays; p++) {
             days.push(<div className='day next-days'>{p}</div>)
         }
+        
         return days
     }
-    const [dayArray, setDayArray] = useState(handleRenderCalendar())
 
-    return (
-        <div className="calendar">
+    previousMonth = (): void => {
+        this.setState(previousState => {
+            let currentDate = new Date(
+                previousState.currentDate.getFullYear(),
+                previousState.currentDate.getMonth() - 1
+              )
+            return {
+              currentDate: currentDate,
+              days: this.handleRenderCalendar(currentDate),
+            };
+        })
+    }
+
+    nextMonth = (): void => {
+        this.setState(previousState => {
+            let currentDate = new Date(
+                previousState.currentDate.getFullYear(),
+                previousState.currentDate.getMonth() + 1
+              )
+            return {
+              currentDate: currentDate,
+              days: this.handleRenderCalendar(currentDate),
+            };
+        })
+    }
+
+    render(): React.ReactNode{
+        return (
+            <div className="calendar">
             <div className="month">
-                <CaretLeft size={20} weight="bold" color="#33a9ac" onClick={()=> setDayArray(handleRenderCalendar(new Date(currentDate.getFullYear(), currentDate.getMonth()-1)))}/>
-                <span>{months[currentDate.getMonth()]}</span>
-                <CaretRight size={20} weight="bold" color="#33a9ac" onClick={()=> setDayArray(handleRenderCalendar(new Date(currentDate.getFullYear(), currentDate.getMonth()+1)))}/>
+                <CaretLeft size={20} weight="bold" color="#33a9ac" onClick={this.previousMonth}/>
+                <span>{this.state.months[this.state.currentDate.getMonth()]}</span>
+                <CaretRight size={20} weight="bold" color="#33a9ac" onClick = {this.nextMonth}/>
             </div>
             <div className="week-days">
                 <div>Dom</div>
@@ -53,7 +100,8 @@ export function Calendar() {
                 <div>Sex</div>
                 <div>Sáb</div>
             </div>
-            <div className="days">{dayArray}</div>
+            <div className="days">{this.state.days}</div>
         </div>
-    )
+        )
+    }
 }
