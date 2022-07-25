@@ -10,7 +10,7 @@
     --content-div-background: #EDEDED;
     --primary-color: #33A9AC;
     --body-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --text-color: #EDEDED;
+    --text-color: #313131;
     --text-big: 2rem;
     --text-sm: 1.4rem;
 }
@@ -30,4 +30,5 @@ body.dark-mode {
     --background-gradient: linear-gradient(90deg, #AB26C0 0%, #7E5ED7 50%, #AB26C0 100%);
     --container-background: #31313180;
     --content-div-background: #313131;
+    --text-color: #EDEDED;
 }

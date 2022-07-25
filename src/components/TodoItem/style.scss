@@ -1,0 +1,36 @@
+.todo-item {
+    width: 24rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: .3rem;
+    transition: .3;
+
+    .item-status {
+        width: 2rem;
+        height: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid var(--primary-color);
+        border-radius: .4rem;
+        margin-right: .6rem;
+        cursor: pointer;
+    }
+
+    .item-status:hover {
+        opacity: .5;
+        background-color: var(--primary-color);
+    }
+
+    .item-status.completed {
+        background-color: var(--primary-color);
+        color: #ededed;
+    }
+
+    .item-text {
+        font-size: var(--text-sm);
+        text-transform: capitalize;
+        color: var(--text-color);
+    }
+}

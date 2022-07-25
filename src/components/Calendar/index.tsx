@@ -89,9 +89,9 @@ export default class Calendar extends React.Component<IProps, IState>{
         return (
             <div className="calendar">
             <div className="month">
-                <CaretLeft size={20} weight="bold" color="#33a9ac" onClick={this.previousMonth}/>
+                <CaretLeft size={20} weight="bold" color="#33a9ac" onClick={this.previousMonth} className="navigate"/>
                 <span>{this.state.months[this.state.currentDate.getMonth()]}</span>
-                <CaretRight size={20} weight="bold" color="#33a9ac" onClick = {this.nextMonth}/>
+                <CaretRight size={20} weight="bold" color="#33a9ac" onClick = {this.nextMonth} className="navigate"/>
             </div>
             <div className="week-days">
                 <div>Dom</div>
