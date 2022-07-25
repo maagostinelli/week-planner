@@ -1,6 +1,6 @@
 import { format } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
-import { Calendar } from '../Calendar'
+import Calendar from '../Calendar'
 import { DayTodo } from '../DayTodo'
 import './style.scss'
 
