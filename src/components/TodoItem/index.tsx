@@ -1,4 +1,5 @@
 import { Check } from "phosphor-react"
+import { useEffect, useRef } from "react"
 
 import './style.scss'
 
@@ -9,9 +10,13 @@ interface todoItemProps {
 }
 
 export function TodoItem(props: todoItemProps) {
+    function handleMarkAsRead() {
+        
+    }
+
     return(
         <div className="todo-item" id={props.id}>
-            <div className={`item-status ${props.status == 'active' ? 'active' : 'completed'}`}>
+            <div className={`item-status ${props.status == 'active' ? 'active' : 'completed'}`} onClick={handleMarkAsRead}>
                 {props.status == 'active' ? "" : (<Check size={15} weight="bold"/>)}
             </div>
             <p className="item-text">{props.text}</p>
@@ -20,12 +25,11 @@ export function TodoItem(props: todoItemProps) {
 }
 
 /*
-<div class="todo-item">
-        <div class="check">
-            <div data-id="${item.id}" class="check-mark ${item.status == "complete" ? "checked" : ""}">
-                <img src="./assets/icon-check.svg" alt="">
-            </div>
-        </div>
-    <div class="todo-text ${item.status == "complete" ? "checked" : ""}">${item.text}</div>
-</div>
+ const handleClick = event => {
+    if (event.currentTarget.classList.contains('my-class')) {
+      console.log('Element contains class');
+    } else {
+      console.log('Element does NOT contain class');
+    }
+  }
  */
