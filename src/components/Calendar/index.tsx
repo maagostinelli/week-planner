@@ -38,20 +38,20 @@ export default class Calendar extends React.Component<IProps, IState>{
         const nextDays = 42 - (firstDayIndex + lastDay)
     
         for (let p = firstDayIndex; p >= 1; p--) {
-            days.push(<div className="day prev-days">{previousLastDay - p + 1}</div>)
+            days.push(<div className="day prev-days" key={`prev${previousLastDay - p + 1}`}>{previousLastDay - p + 1}</div>)
         }
     
         for (let p = 1; p <= lastDay ; p++) {
             if (p == new Date().getDate() && date.getMonth() == new Date().getMonth()) {
-                days.push(<div className='day today'>{p}</div>)
+                days.push(<div className='day today' key={`current${p}`}>{p}</div>)
             }
             else {
-                days.push(<div className='day'>{p}</div>)
+                days.push(<div className='day' key={`current${p}`}>{p}</div>)
             }
         }
     
         for (let p = 1; p <= nextDays; p++) {
-            days.push(<div className='day next-days'>{p}</div>)
+            days.push(<div className='day next-days' key={`next${p}`}>{p}</div>)
         }
         
         return days
@@ -71,11 +71,13 @@ export default class Calendar extends React.Component<IProps, IState>{
     }
 
     nextMonth = (): void => {
+        console.log('awepa')
         this.setState(previousState => {
             let currentDate = new Date(
                 previousState.currentDate.getFullYear(),
                 previousState.currentDate.getMonth() + 1
               )
+              console.log(currentDate.getFullYear())
             return {
               currentDate: currentDate,
               days: this.handleRenderCalendar(currentDate),
