@@ -17,13 +17,13 @@ export function WeekPlanner() {
             </div>
             <div className="planner-wrapper">
                 <Calendar />
-                <DayTodo />
-                <DayTodo />
-                <DayTodo />
-                <DayTodo />
-                <DayTodo />
-                <DayTodo />
-                <DayTodo />
+                <DayTodo weekDay='Segunda-feira'/>
+                <DayTodo weekDay='Terça-feira'/>
+                <DayTodo weekDay='Quarta-feira'/>
+                <DayTodo weekDay='Quinta-feira'/>
+                <DayTodo weekDay='Sexta-feira'/>
+                <DayTodo weekDay='Sábado'/>
+                <DayTodo weekDay='Domingo'/>
             </div>
         </div>
     )
