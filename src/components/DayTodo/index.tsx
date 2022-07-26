@@ -21,8 +21,8 @@ export function DayTodo(props: dayTodoProps) {
             </div>
             <div className="todo-list">
                 <TodoItem id='001' text='some task' status='active'/>
-                <TodoItem id='002' text='some task 2' status='completed'/>
-                <TodoItem id='003' text='some item with some really long text' status='completed'/>
+                <TodoItem id='002' text='some task 2' status='complete'/>
+                <TodoItem id='003' text='some item with some really long text' status='complete'/>
                 <TodoItem id='004' text='some other task' status='active'/>
             </div>
         </div>
