@@ -11,22 +11,21 @@ interface todoItemProps {
 
 export function TodoItem(props: todoItemProps) {
   const [itemStatus, setItemStatus] = useState('active')
-  
+
   function handleMarkAsComplete() {
     if (itemStatus == 'active') {
       setItemStatus('complete')
     }
     else {
-      setItemStatus('complete')
+      setItemStatus('active')
     }
-    console.log(itemStatus)
   }
 
     return(
         <div className="todo-item" id={props.id}>
           <div className={`item-wrapper ${itemStatus}`}>
             <div className='item-status' onClick={handleMarkAsComplete}>
-                {props.status == 'active' ? "" : (<Check size={15} weight="bold"/>)}
+                <Check size={15} weight="bold"/>
             </div>
             <p className="item-text">{props.text}</p>
           </div>

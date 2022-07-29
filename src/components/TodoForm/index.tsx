@@ -1,11 +1,7 @@
-import { Check, Trash } from "phosphor-react";
+import { Check } from "phosphor-react";
 import React, { useState } from "react";
 
-//interface todoFormProps {
-//    onSubmit: {}
-//}
-
-export function todoForm() {
+export function TodoForm(props: any) { //check
     const [input, setInput] = useState('')
 
     const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -15,9 +11,11 @@ export function todoForm() {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        //props.onSubmit({
-        //    id: Math.random()
-        //})
+        props.onSubmit({
+            id: Math.floor( Math.random()*10000 ),
+            text: input,
+        })
+        setInput('')
     }
 
     return(

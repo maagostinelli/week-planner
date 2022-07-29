@@ -20,6 +20,7 @@
             border-radius: .4rem;
             margin-right: .6rem;
             cursor: pointer;
+            color: transparent;
         }
 
         .item-text {
@@ -57,9 +58,13 @@
 
 }
 
-
-
-.item-wrapper.complete .item-status {
-    background-color: var(--primary-color);
-    color: #ededed;
+/*--------------------COMPLETE--------------------*/
+.item-wrapper.complete {
+    .item-status {
+        background-color: var(--primary-color);
+        color: #ededed;
+    }
+    .item-text {
+        opacity: .5;
+    }
 }
