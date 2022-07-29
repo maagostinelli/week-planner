@@ -1,6 +1,8 @@
 import { Check } from "phosphor-react";
 import React, { useState } from "react";
 
+import './style.scss'
+
 export function TodoForm(props: any) { //check
     const [input, setInput] = useState('')
 
@@ -22,7 +24,7 @@ export function TodoForm(props: any) { //check
         <form className="todo-form" onSubmit={handleSubmit}>
             <input type="text" placeholder="Adicionar item" value={input} className="todo-input" onChange={handleTextChange}/>
             <button className="todo-button">
-                <Check/>
+                <Check size={20} weight="bold"/>
             </button>
         </form>
     )

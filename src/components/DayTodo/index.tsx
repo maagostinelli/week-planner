@@ -12,6 +12,11 @@ interface dayTodoProps {
 
 export function DayTodo(props: dayTodoProps) {
     const [todos, setTodos] = useState([])
+    const [isFormActive, setIsFormActive] = useState(false)
+
+    function handleDisplayForm() {
+        setIsFormActive(true)
+    }
 
     /*
      const addTodo = (todo) => {
@@ -27,14 +32,17 @@ export function DayTodo(props: dayTodoProps) {
     return (
         <div className="day-todo">
             <div className="todo-header">
-                <h2>
-                    {props.weekDay}
-                </h2>
-                <button>
-                    <Plus size={20} color="#33A9AC" weight="bold" />
-                </button>
+                
+                { isFormActive ?
+                    <TodoForm /> : 
+                    (<>     
+                        <h2>{props.weekDay}</h2>
+                        <button onClick={handleDisplayForm}>
+                            <Plus size={20} color="#33A9AC" weight="bold" />
+                        </button>
+                    </>)
+                }
             </div>
-            <TodoForm />
             <div className="todo-list">
                 <TodoItem id='001' text='some task' status='active'/>
                 <TodoItem id='002' text='some task 2' status='active'/>
